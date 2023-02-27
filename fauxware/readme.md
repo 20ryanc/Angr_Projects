@@ -35,8 +35,8 @@
  - fauxware and fauxware-mod did not behave as intended and was not functionally equivalent within angr. However, testing the two binaries outside of angr leads to functionally equivalence. 
    - The cause of this error is **potentially a bug** in angr itself. 
    - I made the strcmp external function callable and called it with concrete values. 
-   - One of the test case was strcmp("asdf", "a") which yeilded 0. This suggests that angr's strcmp finds "asdf" and "a" as equivlent, which is not true.
-   - This doesn't seem to affect the solver, we can see evidently that the solver correct explorations. 
+   - One of the test case was strcmp("asdf", "a") which yeilded 0. This suggests that angr's strcmp finds "asdf" and "a" as equivlent, which is not true. In fact, strcmp seems to yeild 0 if one string is a substring starting from the begining of the other string. 
+   - This doesn't seem to affect the solver, we can see evidently that the solver obtained correct explorations. 
 ## Future<a name="future"></a>
  - Look into v-spells darpa
 
