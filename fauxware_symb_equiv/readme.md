@@ -22,13 +22,13 @@
 ## Overview<a name="overview"></a>
 
   - Extension to Fauxware manual equiv
+  - Insetad of manual equiv, we pass two different symbolic into two different states respectively and add constraints from both states constraint to a solver
+  - If constraints from both program states are added to a solver, two symbolic variable set to equal, and the solver yeilds a solution (i.e. satisfiable), then the two program states should be the same in theory
+  - If a solution cannot be found, then we can set the two variables ad different and solve for the constraint. In principle, it should give an example when the two functions don't match
 
 ## Problems<a name="problems"></a>
- - fauxware and fauxware-mod did not behave as intended and was not functionally equivalent within angr. However, testing the two binaries outside of angr leads to functionally equivalence. 
-   - The cause of this error is **potentially a bug** in angr itself. 
-   - I made the strcmp external function callable and called it with concrete values. 
-   - One of the test case was strcmp("asdf", "a") which yeilded 0. This suggests that angr's strcmp finds "asdf" and "a" as equivlent, which is not true. In fact, strcmp seems to yeild 0 if one string is a substring starting from the begining of the other string. 
-   - This doesn't seem to affect the solver, we can see evidently that the solver obtained correct explorations. 
+ - A real function will have a lot of terminating states. To establish true equivilence, we must examine each state and compare it to every other state. Could be an Interesting future project.
+
 ## Future<a name="future"></a>
  - Look into v-spells darpa
 
